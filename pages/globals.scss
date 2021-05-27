@@ -1,0 +1,29 @@
+html,
+body {
+  padding: 0px;
+  margin: 0px;
+  font-family: "Work Sans", sans-serif;
+  font-size: 1rem;
+
+  color: $txt-dark;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Crimson Text", sans-serif;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0px;
+  margin: 0px;
+}
