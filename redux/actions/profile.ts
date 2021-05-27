@@ -7,7 +7,7 @@ import axios from "axios";
 export const getCurrentProfile = (query) => async (dispatch) => {
   try {
     const res = await axios.get(
-      `http://${process.env.baseUrl}/api/profile/user/${query}`
+      `https://${process.env.baseUrl}/api/profile/user/${query}`
     );
     dispatch({
       type: GET_PROFILE,

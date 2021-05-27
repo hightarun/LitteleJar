@@ -17,7 +17,7 @@ import { setAlert } from "./alert";
 export const loadUser = () => async (dispatch) => {
   try {
     if (localStorage.token) {
-      const res = await axios.get(`http://${process.env.baseUrl}/api/auth`);
+      const res = await axios.get(`https://${process.env.baseUrl}/api/auth`);
       dispatch({
         type: USER_LOADED,
         payload: res.data,
