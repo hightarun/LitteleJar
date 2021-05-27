@@ -10,7 +10,7 @@ const nextConfig = {
   },
 
   images: {
-    domains: ["localhost", "192.168.0.128", `${process.env.BASE_URL}`],
+    domains: [`${process.env.BASE_URL}`],
   },
 
   sassOptions: {

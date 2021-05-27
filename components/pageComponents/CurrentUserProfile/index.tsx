@@ -43,8 +43,8 @@ const index = (props: any) => {
 
   useEffect(() => {
     if (props.profile.profile != "") {
-      const bannerSrc = `http://${process.env.baseUrl}${props.profile.profile.banner}`;
-      const avatarSrc = `http://${process.env.baseUrl}${props.profile.profile.user.avatar}`;
+      const bannerSrc = `${process.env.baseUrl}${props.profile.profile.banner}`;
+      const avatarSrc = `${process.env.baseUrl}${props.profile.profile.user.avatar}`;
       setBanner(bannerSrc);
       setAvatar(avatarSrc);
       const fullName = `${props.profile.profile.user.name[0].firstName} ${props.profile.profile.user.name[0].lastName}`;
