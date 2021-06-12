@@ -1,52 +1,48 @@
-.container {
-  margin-right: auto;
-  margin-left: auto;
-  .bannerContain {
-    max-width: 100%;
-    height: fit-content;
-    .banner {
+.bannerContain {
+  max-width: 100%;
+  height: fit-content;
+  .banner {
+    display: flex;
+    border-radius: 10px;
+    max-height: 320px;
+    position: relative;
+    border: 1px solid $grey;
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding-bottom: 25%;
+    width: 100%;
+    .changeBanner {
       display: flex;
-      max-height: 352.5px;
-      position: relative;
-      border: 1px solid $grey;
-      background-repeat: no-repeat;
-      background-size: cover;
-      padding-bottom: 37.5%;
-      width: 100%;
-      .changeBanner {
-        display: flex;
-        align-items: center;
-        background-color: $light;
-        border-radius: 5px;
-        margin: 10px;
-        padding: 0.5rem;
-        width: fit-content;
-        height: fit-content;
-        cursor: pointer;
-        position: absolute;
-        box-shadow: 0 1px 2px 0 $grey;
-        bottom: 0;
-        right: 0;
-        .icon {
-          height: 1rem;
-        }
-        p {
-          margin: 0 5px;
-        }
-        &:hover {
-          box-shadow: 0 1px 2px 0 $dark;
-        }
+      align-items: center;
+      background-color: $light;
+      border-radius: 5px;
+      margin: 10px;
+      padding: 0.5rem;
+      width: fit-content;
+      height: fit-content;
+      cursor: pointer;
+      position: absolute;
+      box-shadow: 0 1px 2px 0 $grey;
+      bottom: 0;
+      right: 0;
+      .icon {
+        height: 1rem;
+      }
+      p {
+        margin: 0 5px;
+      }
+      &:hover {
+        box-shadow: 0 1px 2px 0 $dark;
       }
     }
   }
-
-  .form {
+  .bannerform {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     width: 100%;
-    max-width: 940px;
+    max-width: 1280px;
     height: fit-content;
     label {
       display: inline-block;
@@ -88,23 +84,25 @@
     }
     .preview {
       width: 100%;
-      height: fit-content;
+      max-width: 1280px;
+      max-height: 320px;
+      margin: 10px 0;
+      background-color: red;
       .previewBannerImage {
+        border-radius: 10px;
+        overflow: hidden;
         width: 100%;
-        max-height: 352.5px;
-        padding-bottom: 37.5%;
+        height: 100%;
         background-color: $light;
         border: 1px solid $grey;
-        margin: 10px 0;
         background-repeat: no-repeat;
         background-size: cover;
       }
       .previewNoImage {
         background-color: $light;
         border: 1px solid $grey;
-        width: fit-content;
-        max-height: 352.5px;
-        margin: 10px auto;
+        width: 100%;
+        height: 100%;
         display: flex;
         position: relative;
         flex-direction: column;
@@ -113,7 +111,6 @@
         padding: 20px;
       }
     }
-
     .previewAvatarImage {
       display: flex;
       border: 1px solid $grey;
@@ -122,10 +119,10 @@
       justify-content: center;
       align-items: center;
       margin: 10px 0;
-      min-height: 150px;
-      max-height: 150px;
-      min-width: 150px;
-      max-width: 150px;
+      min-height: 200px;
+      max-height: 200px;
+      min-width: 200px;
+      max-width: 200px;
       border-radius: 50%;
       background-repeat: no-repeat;
       background-size: cover;
@@ -151,7 +148,13 @@
       }
     }
   }
+}
 
+.container {
+  background-color: $light-bg1;
+  margin-right: auto;
+  margin-left: auto;
+  max-width: 1280px;
   .head {
     margin-top: 3vh;
     height: fit-content;
@@ -182,6 +185,92 @@
         }
         .icon {
           height: 1.3rem;
+        }
+      }
+      .avatarform {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        max-width: 100%;
+        height: fit-content;
+        label {
+          display: inline-block;
+          position: relative;
+          height: 100px;
+          width: 100%;
+          div {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            background: $light;
+            border: 2px dotted $dark;
+            border-radius: 10px;
+            p {
+              padding: 2px 1.2rem;
+            }
+            .icon {
+              height: 2rem;
+            }
+          }
+          input[type="file"] {
+            position: absolute;
+            left: 0;
+            opacity: 0;
+            top: 0;
+            bottom: 0;
+            width: 100%;
+            cursor: pointer;
+          }
+          &:hover {
+            border-radius: 10px;
+            box-shadow: 0 2px 4px 0 $grey;
+          }
+        }
+        .preview {
+          width: 100%;
+          max-width: 300px;
+          max-height: 300px;
+          margin: 10px 0;
+          padding-bottom: 75%;
+          .previewAvatarImage {
+            display: flex;
+            border: 1px solid $grey;
+            background-color: $light;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 300px;
+            min-width: 300px;
+            border-radius: 50%;
+            background-repeat: no-repeat;
+            background-size: cover;
+            p {
+              padding: 0 1.2rem;
+            }
+          }
+        }
+
+        button {
+          width: fit-content;
+          background-color: $accent1;
+          color: $txt-dark;
+          padding: 0 10px;
+          border-color: $accent1;
+          cursor: pointer;
+          height: 6vh;
+          border-radius: 4px;
+          &:hover {
+            box-shadow: 0 1px 2px 0 $dark;
+          }
+          .span {
+            font-size: 1rem;
+          }
         }
       }
     }

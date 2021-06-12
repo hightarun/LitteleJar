@@ -21,46 +21,50 @@ const index = (props: any) => {
     }
   }, [props.profile]);
   return (
-    <div className={styles.container}>
+    <Fragment>
       {props.profile.loading && props.profile.profile === null ? (
         <Spinner />
       ) : (
         <Fragment>
-          <div
-            className={styles.banner}
-            style={{
-              backgroundImage: "url(" + `${banner}` + ")",
-            }}
-          ></div>
-          <div className={styles.head}>
+          <div className={styles.bannerContain}>
             <div
-              className={styles.avatar}
+              className={styles.banner}
               style={{
-                backgroundImage: "url(" + `${avatar}` + ")",
+                backgroundImage: "url(" + `${banner}` + ")",
               }}
             ></div>
-            <div className={styles.containInfo}>
-              <div className={styles.info}>
-                <div>
-                  <p>{name}</p>
+          </div>
+          <div className={styles.container}>
+            <div className={styles.head}>
+              <div
+                className={styles.avatar}
+                style={{
+                  backgroundImage: "url(" + `${avatar}` + ")",
+                }}
+              ></div>
+              <div className={styles.containInfo}>
+                <div className={styles.info}>
+                  <div>
+                    <p>{name}</p>
+                  </div>
+                  <div>
+                    <p>{followers} Followers</p>
+                  </div>
                 </div>
-                <div>
-                  <p>{followers} Followers</p>
+                <div className={styles.buttons}>
+                  <button>
+                    <span>Follow</span>
+                  </button>
+                  <button>
+                    <span>Donate</span>
+                  </button>
                 </div>
-              </div>
-              <div className={styles.buttons}>
-                <button>
-                  <span>Follow</span>
-                </button>
-                <button>
-                  <span>Donate</span>
-                </button>
               </div>
             </div>
           </div>
         </Fragment>
       )}
-    </div>
+    </Fragment>
   );
 };
 const mapStateToProps = (state) => ({

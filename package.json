@@ -2,6 +2,7 @@
   "name": "dreamjar",
   "version": "0.1.0",
   "private": true,
+  "author": "hightarun",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -15,6 +16,7 @@
     "@fortawesome/react-fontawesome": "^0.1.14",
     "aos": "^2.3.4",
     "axios": "^0.21.1",
+    "cropperjs": "^1.5.11",
     "next": "^10.2.2",
     "next-compose-plugins": "^2.2.1",
     "next-images": "^1.7.0",

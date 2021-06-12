@@ -1,13 +1,21 @@
-.container {
-  margin-right: auto;
-  margin-left: auto;
+.bannerContain {
+  max-width: 100%;
+  height: fit-content;
   .banner {
+    border-radius: 10px;
     border: 1px solid $grey;
-    height: 352.5px;
+    max-height: 320px;
     background-repeat: no-repeat;
     background-size: cover;
+    padding-bottom: 25%;
     width: 100%;
   }
+}
+.container {
+  background-color: $light-bg1;
+  margin-right: auto;
+  margin-left: auto;
+  max-width: 1280px;
   .head {
     margin-top: 3vh;
     height: fit-content;
