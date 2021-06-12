@@ -74,7 +74,7 @@ const index: React.FC = (props: any) => {
   return (
     <div className={styles.navbar}>
       <div className={styles.logo}>
-        <Link href="/">DreamJar</Link>
+        <Link href="/">{process.env.site}</Link>
       </div>
       <div className={styles.links}>
         {props.isAuthenticated ? authLinks : guestLinks}
