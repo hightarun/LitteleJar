@@ -57,7 +57,7 @@ const index = (props: any) => {
       formData.append("avatar", avatarPost, "avatar.png");
     }
     await props.updateDp(formData);
-    router.reload();
+    router.push("/account");
   };
 
   const handleImagePreview = (e) => {
