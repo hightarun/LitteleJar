@@ -39,14 +39,35 @@
         margin-left: 10px;
         display: flex;
         flex-direction: column;
-
         div {
           margin: 10px;
+          p {
+            font-size: 1.1rem;
+            letter-spacing: 0.5px;
+          }
         }
       }
       .buttons {
         display: flex;
         flex-direction: row;
+
+        div {
+          display: flex;
+          padding: 10px;
+          justify-content: center;
+          align-items: center;
+          color: $txt-dark;
+          border-radius: 4px;
+          border-color: $accent1;
+          background-color: $accent2;
+          &:hover {
+            box-shadow: 0 1px 2px 0 $accent2;
+          }
+          p {
+            font-size: 1rem;
+            letter-spacing: 1px;
+          }
+        }
 
         button {
           margin: 0 10px;
@@ -60,6 +81,9 @@
           border-radius: 4px;
           &:hover {
             box-shadow: 0 1px 2px 0 $dark;
+          }
+          &:focus {
+            outline: none;
           }
           span {
             font-size: 1rem;

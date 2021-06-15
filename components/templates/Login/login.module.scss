@@ -63,6 +63,9 @@
   &:hover {
     box-shadow: 0 2px 4px 0 $grey;
   }
+  &:focus {
+    outline: none;
+  }
   span {
     font-size: 1rem;
     font-weight: 2px;

@@ -45,6 +45,7 @@ const uname: NextPage = (props: any) => {
 };
 
 uname.getInitialProps = async (ctx) => {
+  // @ts-ignore
   const store = initializeStore();
 
   store.dispatch(getCurrentProfile(ctx.query.uname));

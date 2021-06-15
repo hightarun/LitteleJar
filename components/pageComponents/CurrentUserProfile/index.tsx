@@ -1,6 +1,8 @@
 import React, { Fragment, useEffect, useRef, useState } from "react";
 import styles from "./currentProfile.module.scss";
 
+import { useRouter } from "next/router";
+
 //cropperjs
 import Cropper from "cropperjs";
 import "cropperjs/dist/cropper.min.css";
@@ -15,16 +17,26 @@ import { faCamera, faUpload } from "@fortawesome/free-solid-svg-icons";
 //layouts
 import Modal from "../../layouts/Modal";
 import Spinner from "../../layouts/Spinner";
+import { updateDp } from "../../../redux/actions/profile";
 
 const index = (props: any) => {
+  const router = useRouter();
+
+  // profile data
   const [banner, setBanner] = useState<String>("/image/defaultBanner.jpg");
   const [avatar, setAvatar] = useState<String>("/image/default.png");
   const [name, setName] = useState<String>("");
   const [followers, setFollowers] = useState<Number>(0);
+
+  //state to toggle modal to update image
   const [openBanner, setOpenBanner] = useState<Boolean>(false);
   const [openAvatar, setOpenAvatar] = useState<Boolean>(false);
-  const [bannerPost, setBannerPost] = useState<any>({ imageUrl: "" });
-  const [avatarPost, setAvatarPost] = useState<any>({ imageUrl: "" });
+
+  //to store cropped image blob
+  const [bannerPost, setBannerPost] = useState<any>();
+  const [avatarPost, setAvatarPost] = useState<any>();
+
+  //to store blob and url of uploaded image for preview
   const [previewImage, setPreviewImage] = useState<any>({
     file: "",
     imagePreviewUrl: "",
@@ -34,22 +46,37 @@ const index = (props: any) => {
   const bannerRef = useRef();
   const avatarRef = useRef();
 
-  // const onSubmit = (e) => {};
+  const onSubmit = async (e) => {
+    e.preventDefault();
+    //creating formdata to store multipart/form-data
+    const formData = new FormData();
+    if (bannerPost) {
+      formData.append("banner", bannerPost, "banner.png");
+    }
+    if (avatarPost) {
+      formData.append("avatar", avatarPost, "avatar.png");
+    }
+    await props.updateDp(formData);
+    router.reload();
+  };
 
   const handleImagePreview = (e) => {
     e.preventDefault();
+    // make blob and image url for preview image
     let reader = new FileReader();
     let file = e.target.files[0];
-
     reader.onloadend = () => {
       setPreviewImage({
         file: file,
         imagePreviewUrl: reader.result.toString(),
       });
     };
-    if (file) reader.readAsDataURL(file);
+    if (file) {
+      reader.readAsDataURL(file);
+    }
   };
 
+  //to update profile data
   useEffect(() => {
     if (props.profile.profile != "") {
       const bannerSrc = `${process.env.baseUrl}${props.profile.profile.banner}`;
@@ -61,6 +88,8 @@ const index = (props: any) => {
       setFollowers(props.profile.profile.followers.length);
     }
   }, [props.profile]);
+
+  //for cropping image
   useEffect(() => {
     if (bannerRef.current != undefined) {
       const cropper = new Cropper(bannerRef.current, {
@@ -76,7 +105,10 @@ const index = (props: any) => {
         aspectRatio: 16 / 4,
         crop: () => {
           const canvas = cropper.getCroppedCanvas();
-          setBannerPost({ imageUrl: canvas.toDataURL("image/png") });
+          canvas.toBlob(async (blob) => {
+            setBannerPost(blob);
+          });
+          //setBannerPost({ imageUrl: canvas.toDataURL("image/png") });
         },
       });
     }
@@ -94,11 +126,15 @@ const index = (props: any) => {
         aspectRatio: 1,
         crop: () => {
           const canvas = cropper.getCroppedCanvas();
-          setAvatarPost({ imageUrl: canvas.toDataURL("image/png") });
+          canvas.toBlob(async (blob) => {
+            setAvatarPost(blob);
+          });
+          //setAvatarPost({ imageUrl: canvas.toDataURL("image/png") });
         },
       });
     }
   });
+
   return (
     <Fragment>
       {props.profile.loading && props.profile.profile === null ? (
@@ -132,7 +168,7 @@ const index = (props: any) => {
                 <form
                   className={styles.bannerform}
                   id="form"
-                  //onSubmit={(e) => onSubmit(e)}
+                  onSubmit={(e) => onSubmit(e)}
                   encType="multipart/form-data"
                 >
                   <label htmlFor="banner">
@@ -146,7 +182,7 @@ const index = (props: any) => {
                     </div>
                     <input
                       type="file"
-                      accept="image/*"
+                      accept="image/png , image/jpg , image/jpeg"
                       name="banner"
                       id="banner"
                       onChange={(e) => handleImagePreview(e)}
@@ -170,7 +206,7 @@ const index = (props: any) => {
                       </div>
                     </div>
                   )}
-                  <button type="submit">
+                  <button value="submit" type="submit">
                     <span>Change Banner</span>
                   </button>
                 </form>
@@ -203,7 +239,7 @@ const index = (props: any) => {
                 >
                   <form
                     className={styles.avatarform}
-                    //onSubmit={(e) => onSubmit(e)}
+                    onSubmit={(e) => onSubmit(e)}
                     encType="multipart/form-data"
                   >
                     <label htmlFor="avatar">
@@ -216,7 +252,7 @@ const index = (props: any) => {
                       </div>
                       <input
                         type="file"
-                        accept="image/*"
+                        accept="image/png , image/jpg , image/jpeg"
                         name="avatar"
                         id="avatar"
                         onChange={(e) => handleImagePreview(e)}
@@ -256,10 +292,10 @@ const index = (props: any) => {
                 </div>
                 <div className={styles.buttons}>
                   <button>
-                    <span>Settings</span>
+                    <span>Followers</span>
                   </button>
                   <button>
-                    <span>Donations</span>
+                    <span>Following</span>
                   </button>
                 </div>
               </div>
@@ -277,4 +313,12 @@ const mapStateToProps = (state) => ({
   profile: state.profile,
 });
 
-export default connect(mapStateToProps)(index);
+const mapDispatchToProps = (dispatch) => {
+  return {
+    // setAlert: (msg: string, alertType: string) =>
+    //   dispatch(setAlert(msg, alertType)),
+    updateDp: (images: any) => dispatch(updateDp(images)),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(index);
