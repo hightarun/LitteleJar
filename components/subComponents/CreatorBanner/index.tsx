@@ -49,7 +49,7 @@ const index = ({
             </div>
             <input
               type="file"
-              accept="image/png , image/jpg , image/jpeg"
+              accept="image/*"
               name="banner"
               id="banner"
               onChange={(e) => handleImagePreview(e)}
