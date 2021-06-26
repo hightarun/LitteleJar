@@ -18,7 +18,7 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
           name="viewport"
           content="width=device-width,height=device-height, initial-scale=1.0, viewport-fit=cover"
         />
-        <link rel="icon" href="/ChanpreRound.png" />
+        <link rel="icon" href="/jarFavicon.png" />
         <link
           href="https://fonts.googleapis.com/css?family=Crimson+Text|Work+Sans:400,700"
           rel="stylesheet"

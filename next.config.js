@@ -1,7 +1,7 @@
 //nextjs config file
-
 const withPlugins = require("next-compose-plugins");
 const withImages = require("next-images");
+const withOptimizedImages = require("next-optimized-images");
 
 const nextConfig = {
   env: {
@@ -9,6 +9,7 @@ const nextConfig = {
     site: process.env.SITE,
   },
 
+  //for next/image <Image/>
   images: {
     domains: ["localhost", `${process.env.BASE_URL}`],
   },
@@ -22,9 +23,9 @@ const nextConfig = {
     $accent2: #ff8585;
     $txt-light: #DEE3EA;
     $txt-dark: #222222;
-    $grey: #D3D3D3;
-    $light-bg1: #f6fbfd;
-    $light-bg2: #fdf8f6;
+    $grey: #E8E8E8;
+    $light-bg1: #F1F0EB;
+    $light-bg2: #F2DDD5;
     $danger: #dc3545;
     $success: #28a745;`,
   },
@@ -38,4 +39,23 @@ const nextConfig = {
   // },
 };
 
-module.exports = withPlugins([[withImages]], nextConfig);
+module.exports = withPlugins(
+  [
+    [withImages],
+    [
+      withOptimizedImages,
+      {
+        optimizeImagesInDev: true,
+        gifsicle: {
+          interlaced: true,
+          optimizationLevel: 8,
+        },
+        pngquant: { quality: [0.6, 0.8] },
+        responsive: {
+          adapter: require("responsive-loader"),
+        },
+      },
+    ],
+  ],
+  nextConfig
+);

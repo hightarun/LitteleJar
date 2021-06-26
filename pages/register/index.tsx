@@ -6,7 +6,7 @@ import React, { Fragment } from "react";
 //component imports
 import Navbar from "../../components/layouts/Navbar";
 
-import SignUp from "../../components/templates/SignUp";
+import SignUp from "../../components/pageTemplates/SignUp";
 
 import dynamic from "next/dynamic";
 const UserLoadedNoSSR = dynamic(() => import("../../utils/loadUser"), {

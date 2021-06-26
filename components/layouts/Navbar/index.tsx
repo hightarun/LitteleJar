@@ -9,7 +9,7 @@ import { useRouter } from "next/router";
 
 const index: React.FC = (props: any) => {
   const router = useRouter();
-  const [avatar, setAvatar] = useState<String>("/image/default.png");
+  const [avatar, setAvatar] = useState<string>("");
   const [showMenu, setShowMenu] = useState<Boolean>(false);
 
   const profileMenuToggle = () => {
@@ -31,13 +31,9 @@ const index: React.FC = (props: any) => {
 
   const authLinks = (
     <div className={styles.menu}>
-      <div
-        className={styles.profile}
-        style={{
-          backgroundImage: "url(" + `${avatar}` + ")",
-        }}
-        onClick={profileMenuToggle}
-      ></div>
+      <div onClick={profileMenuToggle}>
+        <img className={styles.profile} src={avatar} alt="Profile" />
+      </div>
       {showMenu ? (
         <div className={styles.dropdown}>
           <div onClick={profileHandler}>
@@ -74,7 +70,9 @@ const index: React.FC = (props: any) => {
   return (
     <div className={styles.navbar}>
       <div className={styles.logo}>
-        <Link href="/">{process.env.site}</Link>
+        <Link href="/">
+          <img src="/logo.png" alt="LittleJar" />
+        </Link>
       </div>
       <div className={styles.links}>
         {props.isAuthenticated ? authLinks : guestLinks}

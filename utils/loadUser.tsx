@@ -8,10 +8,13 @@ import { connect } from "react-redux";
 //loadUser action will get the user from the database if the token verifies at the server
 const UserLoad = (props) => {
   useEffect(() => {
-    if (localStorage.token) {
-      setAuthToken(localStorage.token);
-    }
-    props.loadUser();
+    const load = async () => {
+      if (localStorage.token) {
+        setAuthToken(localStorage.token);
+      }
+      await props.loadUser();
+    };
+    load();
   });
   return <div></div>;
 };

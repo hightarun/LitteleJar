@@ -10,8 +10,12 @@
   box-shadow: 0px 0.5px 0.5px $grey;
 
   .logo {
-    margin-left: 0.5em;
-    font-size: 1.8em;
+    img {
+      cursor: pointer;
+      margin: auto 1rem;
+      height: 40px;
+      width: auto;
+    }
   }
 
   .links {
@@ -36,14 +40,13 @@
   border-radius: 50%;
   .profile {
     border-radius: 50%;
+    border: 2px solid $accent1;
     height: 50px;
     width: 50px;
-    background-repeat: no-repeat;
-    background-size: cover;
     cursor: pointer;
   }
   .dropdown {
-    margin-top: 10px;
+    margin-top: 6px;
     right: 0px;
     position: absolute;
     box-shadow: 0px 2px 4px 0px $grey;

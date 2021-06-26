@@ -4,7 +4,7 @@ import type { NextPage } from "next";
 import { Fragment } from "react";
 
 import Navbar from "../../components/layouts/Navbar";
-import Login from "../../components/templates/Login";
+import Login from "../../components/pageTemplates/Login";
 
 import dynamic from "next/dynamic";
 

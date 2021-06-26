@@ -1,0 +1,126 @@
+.container {
+  display: flex;
+  background-color: $light;
+  flex-direction: column;
+  min-height: 92vh;
+  width: 100%;
+  align-items: center;
+  .quote {
+    display: flex;
+    align-items: center;
+    margin-top: 30px;
+    text-align: center;
+    height: 150px;
+    img {
+      height: 100%;
+    }
+  }
+
+  .claimTxt {
+    margin-top: 50px;
+  }
+  .start {
+    display: flex;
+    margin-top: 10px;
+    height: fit-content;
+    width: 80%;
+    align-items: center;
+    justify-content: center;
+    .userStart {
+      display: flex;
+      background-color: $grey;
+      align-items: center;
+      justify-content: center;
+      margin-right: 20px;
+      border-radius: 10px;
+      padding-left: 10px;
+      height: 60px;
+      max-width: 300px;
+      width: fit-content;
+      .domain {
+        font-size: 1.2rem;
+        width: fit-content;
+      }
+      .uname {
+        background-color: $grey;
+        font-size: 1.2rem;
+        width: 40%;
+        border: none;
+        outline: none;
+        color: $txt-dark;
+        &:focus {
+          background-color: $grey;
+        }
+      }
+    }
+    .butn {
+      background-color: $accent1;
+      border-color: $accent1;
+      cursor: pointer;
+      width: fit-content;
+      height: fit-content;
+      border-radius: 4px;
+      padding: 10px;
+      &:hover {
+        box-shadow: 0 2px 4px 0 $grey;
+      }
+      span {
+        font-size: 1rem;
+      }
+    }
+  }
+}
+
+.container2 {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  height: 100vh;
+  align-items: center;
+  background: $light-bg2;
+  border-top-left-radius: 150px;
+  .intro {
+    display: flex;
+    align-items: center;
+    margin: 50px 0;
+    justify-content: center;
+    .aboutTxt {
+      // background-color: $light-bg2;
+      height: fit-content;
+      width: 50%;
+      border-top-left-radius: 20px;
+      border-bottom-right-radius: 20px;
+
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center--;
+      text-align: left;
+      padding: 10px;
+      p {
+        font-size: 1.2rem;
+        margin: 8px auto;
+      }
+    }
+    .logo {
+      height: 150px;
+      width: fit-content;
+      img {
+        height: 100%;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .start {
+    flex-direction: column;
+    .butn {
+      margin-top: 10px;
+    }
+  }
+}
+@media only screen and (max-width: 992px) {
+}
+@media (max-width: 1200px) {
+}

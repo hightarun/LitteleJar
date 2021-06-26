@@ -3,7 +3,7 @@ import { Fragment } from "react";
 import type { NextPage } from "next";
 import styles from "./Home.module.scss";
 
-import HomePage from "../components/templates/HomePage";
+import HomePage from "../components/pageTemplates/HomePage";
 import Navbar from "../components/layouts/Navbar";
 import Footer from "../components/layouts/Footer";
 
