@@ -62,7 +62,7 @@ const index: React.FC = (props: any) => {
 
   useEffect(() => {
     if (props.user) {
-      const srcString = `${process.env.baseUrl}${props.user.avatar}`;
+      const srcString = `${props.user.avatar}`;
       setAvatar(srcString);
     }
   }, [props.user]);

@@ -51,9 +51,6 @@ module.exports = withPlugins(
           optimizationLevel: 8,
         },
         pngquant: { quality: [0.6, 0.8] },
-        responsive: {
-          adapter: require("responsive-loader"),
-        },
       },
     ],
   ],

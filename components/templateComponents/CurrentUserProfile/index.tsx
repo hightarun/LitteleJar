@@ -84,8 +84,8 @@ const index = (props: any) => {
   //to update profile data
   useEffect(() => {
     if (props.profile.profile != "") {
-      const bannerSrc = `${process.env.baseUrl}${props.profile.profile.banner}`;
-      const avatarSrc = `${process.env.baseUrl}${props.profile.profile.user.avatar}`;
+      const bannerSrc = `${props.profile.profile.banner}`;
+      const avatarSrc = `${props.profile.profile.user.avatar}`;
       setBanner(bannerSrc);
       setAvatar(avatarSrc);
       const fullName = `${props.profile.profile.user.name[0].firstName} ${props.profile.profile.user.name[0].lastName}`;

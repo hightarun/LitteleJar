@@ -4,7 +4,10 @@ import thunk from "redux-thunk";
 import rootReducer from "./reducers";
 import { useMemo } from "react";
 
-const composeEnhancers = compose;
+const composeEnhancers =
+  (typeof window !== "undefined" &&
+    (window as any).__REDUX_DEVTOOLS_EXTENSION_COMPOSE__) ||
+  compose;
 
 // let store;
 
